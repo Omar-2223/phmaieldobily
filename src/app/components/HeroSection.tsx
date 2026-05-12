@@ -126,7 +126,7 @@ export default function HeroSection() {
                   <a
                     href="#features"
                     className="flex-1 flex items-center justify-center gap-2 rounded-xl py-3 px-5 font-medium text-sm text-foreground/80 border border-border bg-background/40 hover:bg-background/70 hover:text-foreground transition-all duration-300"
-
+>
                     {t('hero.cta.learn')}
                     <Icon name="ChevronDownIcon" size={14} />
                   </a>
