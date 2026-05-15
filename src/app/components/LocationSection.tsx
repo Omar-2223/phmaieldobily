@@ -198,7 +198,7 @@ export default function LocationSection() {
               <p
                 className={`text-sm text-muted-foreground leading-relaxed ${lang === 'ar' ? 'font-arabic' : ''}`}
               >
-                {lang === 'ar' ? 'نوصي دائماً بتنزيل أحدث إصدار من موقعنا الرسمي. سجل الحضور للحصول على تنبيهات تلقائية عبر البريد الإلكتروني أو الرسائل القصيرة عند توفر تحديثات جديدة.' : 'We recommend always downloading the latest version from our official website. Subscribe to receive automatic alerts via email or SMS when new updates are available.'}
+                {lang === 'ar' ? 'نوصي دائماً بتنزيل أحدث إصدار من موقعنا الرسمي. سجل الدخول للحصول على تنبيهات تلقائية عبر البريد الإلكتروني أو الرسائل القصيرة عند توفر تحديثات جديدة.' : 'We recommend always downloading the latest version from our official website. Subscribe to receive automatic alerts via email or SMS when new updates are available.'}
               </p>
             </div>
           </div>
