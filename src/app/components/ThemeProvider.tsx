@@ -10,7 +10,7 @@ interface ThemeContextType {
 }
 
 export const ThemeContext = createContext<ThemeContextType>({
-  theme: 'light',
+  theme: 'dark',
   toggleTheme: () => {},
 });
 
@@ -19,28 +19,27 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
 
   const toggleTheme = useCallback(() => {
-    setTheme((prev) => (prev === 'light' ? 'dark' : 'light'));
+    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   }, []);
 
   useEffect(() => {
-    const root = document.documentElement;
+    const html = document.documentElement;
+    html.setAttribute('data-theme', theme);
+    // Keep Tailwind dark: variants in sync
     if (theme === 'dark') {
-      root.classList.add('dark-mode');
-      root.classList.remove('light-mode');
+      html.classList.add('dark');
     } else {
-      root.classList.add('light-mode');
-      root.classList.remove('dark-mode');
+      html.classList.remove('dark');
     }
   }, [theme]);
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <div data-theme={theme} className={theme === 'dark' ? 'theme-dark' : 'theme-light'}>
-        {children}
-      </div>
+      {children}
     </ThemeContext.Provider>
   );
 }
+
