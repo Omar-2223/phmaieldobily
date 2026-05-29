@@ -6,7 +6,7 @@ import '../styles/tailwind.css';
 const dmSans = DM_Sans({
   subsets: ['latin'],
   weight: ['300', '400', '500', '600', '700'],
-  variable: '--font-dm-sans',
+  variable: '--font-dm-sans', // feeds into --font-sans in CSS
   display: 'swap',
 });
 
@@ -36,12 +36,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${dmSans.variable} dark`}>
-      <body className={dmSans.className}>
+    // data-theme="dark" is the SSR default — ThemeProvider overrides on client
+    <html lang="en" className={dmSans.variable} data-theme="dark">
+      <body>
         {children}
-
         <script type="module" async src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fphmaieldob5299back.builtwithrocket.new&_be=https%3A%2F%2Fappanalytics.rocket.new&_v=0.1.18" />
-        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" /></body>
+        <script type="module" defer src="https://static.rocket.new/rocket-shot.js?v=0.0.2" />
+      </body>
     </html>
   );
 }
